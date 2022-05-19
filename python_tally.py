@@ -7,86 +7,41 @@ from tkinter import ttk
 
 def Stock_Query():
     global Canvas1
-    Canvas1 = tk.Canvas( background="#B0B0B0", relief="ridge")
-    Canvas1.place(relx=0, rely=0.07, relheight=0.800, relwidth=.850,)
-    Label5 = Label(Canvas1,text='Profit & loss ac',borderwidth="0", width=5, background="#3385ff",
+    Canvas1 = tk.Canvas( background="#B0B0B0", insertbackground="black", relief="ridge",selectbackground="blue", selectforeground="white")
+    Canvas1.place(relx=0, rely=0.070, relheight=0.800, relwidth=.850)
+    Label5 = Label(Canvas1,text='Company name',borderwidth="0", width=3, background="#3385ff",
                                      foreground="#00254a",
-                                     font="-family {Segoe UI} -size 10 -weight bold ",)
-    Label5.place(relx=0, rely=0, relheight=0.03, relwidth=0.999,)
-    
+                                     font="-family {Segoe UI} -size 10 -weight bold ")
+    Label5.place(relx=0, rely=0, relheight=0.03, relwidth=0.999)
+
+    global Canvas4
+    Canvas4 = tk.Canvas(Canvas1, background="#ffffff", insertbackground="black", relief="ridge",selectbackground="blue", selectforeground="white")
+    Canvas4.place(relx=0.380, rely=0.0300, relheight=0.110, relwidth=0.250)
+    Label6 = Label(Canvas4,text='Name of item',borderwidth="0", width=7, background="white",
+                                     foreground="#00254a",
+                                     font="-family {Segoe UI} -size 10 -weight bold ")
+    Label6.place(relx=0.25, rely=0.20, relheight=0.30, relwidth=0.400)
+    Entry1 = Entry(Canvas4,width=28,borderwidth="3")
+    Entry1.place(relx=0.25, rely=0.60, relheight=0.30, relwidth=0.500)
+
+
     global Canvas2
-    Canvas2 = tk.Canvas(Canvas1, background="#ffffff", relief="ridge",selectbackground="blue", selectforeground="white")
-    Canvas2.place(relx=0, rely=0.0300, relheight=0.07, relwidth=0.499)
-    Label6 = Label(Canvas2,text='Particulars',borderwidth="0", width=11, background="white",
-                                                foreground="#000000",
-                                                font="-family {Segoe UI} -size 12  ")
-    Label6.place(relx=0, rely=0.20, relheight=0.30, relwidth=0.300)
-
-    Label8 = Label(Canvas2,text='ABC Pvt Ltd',borderwidth="0", width=11, background="white",
-                                     foreground="#000000",
-                                     font="-family {Segoe UI} -size 12  ")
-    Label8.place(relx=0.75, rely=0.10, relheight=0.30, relwidth=0.300)
-
-    Label10 = Label(Canvas2,text='For 1-Apr-22',borderwidth="0", width=11, background="white",
-                                     foreground="#000000",
-                                     font="-family {Segoe UI} -size 10  ")
-    Label10.place(relx=0.75, rely=0.6, relheight=0.30, relwidth=0.300)
-
-    global Canvas5
-    Canvas5 = tk.Canvas(Canvas1, background="#ffffff", relief="ridge",selectbackground="blue", selectforeground="white")
-    Canvas5.place(relx=0.500, rely=0.0300, relheight=0.07, relwidth=0.499)
-    Label7 = Label(Canvas5,text='Particulars',borderwidth="0", width=11, background="white",
-                                     foreground="#000000",
-                                     font="-family {Segoe UI} -size 12  ")
-    Label7.place(relx=0, rely=0.20, relheight=0.30, relwidth=0.300)
-
-    Label8 = Label(Canvas5,text='ABC Pvt Ltd',borderwidth="0", width=11, background="white",
-                                     foreground="#000000",
-                                     font="-family {Segoe UI} -size 12  ")
-    Label8.place(relx=0.75, rely=0.10, relheight=0.30, relwidth=0.300)
-
-    Label10 = Label(Canvas5,text='For 1-Apr-22',borderwidth="0", width=11, background="white",
-                                     foreground="#000000",
-                                     font="-family {Segoe UI} -size 10  ")
-    Label10.place(relx=0.75, rely=0.6, relheight=0.30, relwidth=0.300)
+    Canvas2 = tk.Canvas(Canvas1, background="#ffffff", insertbackground="black", relief="ridge",selectbackground="blue", selectforeground="white")
+    Canvas2.place(relx=0.360, rely=0.142, relheight=0.300, relwidth=0.290)
+    Label5 = Label(Canvas2,text='List of stock items',borderwidth="0", width=3, background="#3385ff",
+                                    foreground="#00254a",
+                                     font="-family {Segoe UI} -size 10 -weight bold ")
+    Label5.place(relx=0, rely=0, relheight=0.2, relwidth=0.999)
+    btn=Button(Canvas2,text='Create',borderwidth="0",background="#fff",
+                                     foreground="black",width=9,font="-family {Segoe UI} -size 10 ",command=create_group).place(relx=0.6,y=38,relwidth=0.350)
+    btn1=Button(Canvas2,text='Stock1',borderwidth="0",background="#fff",
+                                   foreground="black",width=9,font="-family {Segoe UI} -size 10 ",command=Selected_Stocks).place(relx=0,y=58,relwidth=0.250)
+    btn2=Button(Canvas2,text='Stock2',borderwidth="0",background="#fff",
+                                     foreground="black",width=9,font="-family {Segoe UI} -size 10 ",command=Selected_Stocks).place(relx=0,y=98,relwidth=0.250)
 
     global Canvas3
     Canvas3 = tk.Canvas(background="#e6ffff", insertbackground="black", relief="ridge",selectbackground="blue", selectforeground="white")
-    Canvas3.place(relx=0.850, rely=0.07, relheight=0.8, relwidth=0.150)
-
-
-    global Canvas6
-    Canvas6 = tk.Canvas(Canvas1, background="#ffffff", relief="ridge",selectbackground="blue", selectforeground="white")
-    Canvas6.place(relx=0.500, rely=0.100, relheight=0.9, relwidth=0.499)
-    f13=Frame(Canvas6,bg="white",relief=RAISED,bd=2)
-    f13.place(x=0,y=2,width=650,height=620)
-    f13bt1=Button(f13,text="Opening Stock",font=("times new roman",12,),bg="white",fg="black",borderwidth=0)
-    f13bt1.place(x=0,y=0,anchor="nw")
-    f13bt2=Button(f13,text="Purchase Accounts                                                                                                               37,950.00",font=("times new roman",12,),bg="white",fg="black",borderwidth=0)
-    f13bt2.place(x=0,y=30,anchor="nw")
-    f13bt3=Button(f13,text="Direct expenses                                                                                                                    40,000.00",font=("times new roman",12,),bg="white",fg="black",borderwidth=0)
-    f13bt3.place(x=0,y=60,anchor="nw")
-    f13bt4=Button(f13,text="Gross Loss b/f",font=("times new roman",12,),bg="white",fg="black",borderwidth=0)
-    f13bt4.place(x=0,y=90,anchor="nw")
-    f13bt5=Button(f13,text="Indirect expenses",font=("times new roman",12,),bg="white",fg="black",borderwidth=0)
-    f13bt5.place(x=0,y=90,anchor="nw")
-
-
-    global Canvas7
-    Canvas7 = tk.Canvas(Canvas1, background="#ffffff", relief="ridge",selectbackground="blue", selectforeground="white")
-    Canvas7.place(relx=0, rely=0.100, relheight=200, relwidth=0.499)
-    f13=Frame(Canvas7,bg="white",relief=RAISED,bd=2)
-    f13.place(x=0,y=2,width=650,height=620)
-    f13bt1=Button(f13,text="Sales accounts",font=("times new roman",12,),bg="white",fg="black",borderwidth=0)
-    f13bt1.place(x=0,y=0,anchor="nw")
-    f13bt2=Button(f13,text="Closing Stock                                                                                                                       37,950.00",font=("times new roman",12,),bg="white",fg="black",borderwidth=0)
-    f13bt2.place(x=0,y=30,anchor="nw")
-    f13bt3=Button(f13,text="Direct expenses                                                                                                                    40,000.00",font=("times new roman",12,),bg="white",fg="black",borderwidth=0)
-    f13bt3.place(x=0,y=60,anchor="nw")
-    f13bt4=Button(f13,text="Gross Loss c/o",font=("times new roman",12,),bg="white",fg="black",borderwidth=0)
-    f13bt4.place(x=0,y=90,anchor="nw")
-    f13bt5=Button(f13,text="Nett loss",font=("times new roman",12,),bg="white",fg="black",borderwidth=0)
-    f13bt5.place(x=0,y=90,anchor="nw")
+    Canvas3.place(relx=0.850, rely=0.100, relheight=0.8, relwidth=0.150)
 
 def Selected_Stocks():
     global selected_groups_frame
@@ -623,21 +578,24 @@ screen.title("Tally")
 screen.configure(background="#848884")
 screen.configure(cursor="arrow")
           
-name = Label(screen, text="TallyPrime", fg='pink',bg='#3a646b',font=("Arial", 13),anchor='w').place(x = 1,y = 0,width=1366,height=60)
-name = Label(screen, text="Gate WayOf Tally", fg='black',bg='#00c8ff',font=('Arial 7 bold'),anchor='w').place(x = 1,y = 60,width=1366,height=13)
-name = Label(screen, text="MANAGE" ,fg='#00c8ff',bg='#3a646b',font=('Arial 9 underline'),anchor='w').place(x = 110,y = 9,width=206,height=10)
-
-b1 = Button(screen,text = "K:Company",activeforeground = "black", activebackground = "white",fg='white',bg='#3a646b',borderwidth=0,underline=0,font=('Arial 10')).place (x=120,y=33)
-b2 = Button(screen,text = "Y:Data",activeforeground = "black", activebackground = "white",fg='white',bg='#3a646b',borderwidth=0,underline=0,font=('Arial 10')).place (x=275,y=33)
-b3 = Button(screen,text = "Z:Exchange",activeforeground = "black", activebackground = "white",fg='white',bg='#3a646b',borderwidth=0,underline=0,font=('Arial 10')).place (x=395,y=33)
-b4 = Button(screen,text = "  G:Go To  ",activeforeground = "black", activebackground = "white",fg='black',bg='white',borderwidth=0,underline=2,font=('Arial 10 bold'),).place (x=565,y=33)
-b5 = Button(screen,text = "O:Import",activeforeground = "black", activebackground = "white",fg='white',bg='#3a646b',borderwidth=0,underline=0,font=('Arial 10')).place (x=825,y=33)
-b6 = Button(screen,text = "E:Export",activeforeground = "black", activebackground = "white",fg='white',bg='#3a646b',borderwidth=0,underline=0,font=('Arial 10')).place (x=925,y=33)
-b7 = Button(screen,text = "M:E-mail",activeforeground = "black", activebackground = "white",fg='white',bg='#3a646b',borderwidth=0,underline=0,font=('Arial 10')).place (x=1025,y=33)
-b8 = Button(screen,text = "P:Print",activeforeground = "black", activebackground = "white",fg='white',bg='#3a646b',borderwidth=0,underline=0,font=('Arial 10')).place (x=1127,y=33)
-b9 = Button(screen,text = "F1:Help",activeforeground = "black", activebackground = "white",fg='white',bg='#3a646b',borderwidth=0,underline=0,font=('Arial 10')).place (x=1227,y=33)
-
-
+sbmibtn=Button(screen,text='K:Company',borderwidth="0",background="#023047",
+                                     foreground="white",width=10,font="-family {Segoe UI} -size 12 -weight bold ").place(x=20,y=10)
+sbmibtn=Button(screen,text='Y:Data',borderwidth="0",background="#023047",
+                                     foreground="white",width=10,font="-family {Segoe UI} -size 12 -weight bold ").place(x=180,y=10)
+sbmibtn=Button(screen,text='Z:Exchange',borderwidth="0",background="#023047",
+                                     foreground="white",width=10,font="-family {Segoe UI} -size 12 -weight bold ").place(x=340,y=10)
+sbmibtn=Button(screen,text='G:Go To',borderwidth="0",background="#023047",
+                                     foreground="white",width=10,font="-family {Segoe UI} -size 12 -weight bold ").place(x=600,y=10)
+sbmibtn=Button(screen,text='O:Import',borderwidth="0",background="#023047",
+                                     foreground="white",width=10,font="-family {Segoe UI} -size 12 -weight bold ").place(x=850,y=10)
+sbmibtn=Button(screen,text='E;Export',borderwidth="0",background="#023047",
+                                     foreground="white",width=10,font="-family {Segoe UI} -size 12 -weight bold ").place(x=990,y=10)
+sbmibtn=Button(screen,text='M:E-mail',borderwidth="0",background="#023047",
+                                     foreground="white",width=10,font="-family {Segoe UI} -size 12 -weight bold ").place(x=1130,y=10)
+sbmibtn=Button(screen,text='P:Print',borderwidth="0",background="#023047",
+                                     foreground="white",width=10,font="-family {Segoe UI} -size 12 -weight bold ").place(x=1270,y=10)
+sbmibtn=Button(screen,text='F1:Help',borderwidth="0",background="#023047",
+                                     foreground="white",width=10,font="-family {Segoe UI} -size 12 -weight bold ").place(x=1400,y=10)
 
 global Canvas1
 Canvas1 = tk.Canvas( background="#B0B0B0", relief="ridge")
@@ -656,16 +614,18 @@ Canvas3.place(relx=0.850, rely=0.07, relheight=0.8, relwidth=0.150)
 global Canvas4
 Canvas4 = tk.Canvas(background="#fff", insertbackground="black", relief="ridge",selectbackground="blue", selectforeground="white")
 Canvas4.place(relx=0.680, rely=0.3, relheight=0.35, relwidth=0.150)
-Label5 = Label(Canvas4,text='Gate way of tally',borderwidth="0", width=3, background="#3385ff",
+Label5 = Label(Canvas4,text='Statements of Inventory',borderwidth="0", width=3, background="#3385ff",
                                      foreground="#fff",
                                      font="-family {Segoe UI} -size 10 -weight bold ")
 Label5.place(relx=0, rely=0, relheight=0.1, relwidth=0.999)
-btn2=Button(Canvas4,text='Profit & Loss A/c',borderwidth="0",background="#fff",
+btn2=Button(Canvas4,text='STock Query',borderwidth="0",background="#fff",
                                      foreground="black",width=100,font="-family {Segoe UI} -size 10 ",command=Stock_Query).place(relx=0,y=68,relwidth=1)
-btn2=Button(Canvas4,text='Stock summary',borderwidth="0",background="#fff",
+btn2=Button(Canvas4,text='Movement Analysis',borderwidth="0",background="#fff",
                                      foreground="black",width=100,font="-family {Segoe UI} -size 10 ",command=Movement_Analysis).place(relx=0,y=108,relwidth=1)
-btn2=Button(Canvas4,text='Ratio Analysis',borderwidth="0",background="#fff",
+btn2=Button(Canvas4,text='Ageing Analysis',borderwidth="0",background="#fff",
                                      foreground="black",width=100,font="-family {Segoe UI} -size 10 ",command=Selected_Ledgers).place(relx=0,y=138,relwidth=1)
+btn2=Button(Canvas4,text='Cost Estimation',borderwidth="0",background="#fff",
+                                     foreground="black",width=100,font="-family {Segoe UI} -size 10 ",command=Group_Analysis).place(relx=0,y=178,relwidth=1)
 btn2=Button(Canvas4,text='Quit',borderwidth="0",background="#fff",
                                      foreground="black",width=100,font="-family {Segoe UI} -size 10 ").place(relx=0,y=218,relwidth=1)
 
